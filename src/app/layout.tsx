@@ -1,4 +1,5 @@
 export {metadata} from '@/lib/layout-config'
+import {tilda} from '@/lib/layout-config'
 import '@/app/globals.css'
 
 export default function RootLayout({
@@ -8,7 +9,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={`antialiased`}>{children}</body>
+      <body className={`${tilda.variable} antialiased`}>{children}</body>
     </html>
   )
 }
