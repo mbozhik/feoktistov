@@ -4,6 +4,8 @@ import '@/app/globals.css'
 
 import {cn} from '@/lib/utils'
 
+import Header from '~/Global/Header'
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -11,7 +13,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className={cn(tilda.variable, 'bg-background-gray text-black', 'font-sans antialiased')}>{children}</body>
+      <body className={cn(tilda.variable, 'bg-background-gray text-black', 'font-sans antialiased')}>
+        <Header />
+        {children}
+      </body>
     </html>
   )
 }

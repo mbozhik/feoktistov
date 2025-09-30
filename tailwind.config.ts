@@ -20,6 +20,7 @@ export default {
         light: '#57668A',
         medium: '#354469',
         dark: '#1C253B',
+        black: '#091423',
       },
       gray: '#D4D4D4',
       destructive: '#FF5757',
