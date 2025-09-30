@@ -1,3 +1,9 @@
+import Container from '~/Global/Container'
+
 export default function Home() {
-  return <div>bozzhik.com</div>
+  return (
+    <Container>
+      <div className="bg-background">bozzhik.com</div>
+    </Container>
+  )
 }
