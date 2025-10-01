@@ -1,6 +1,6 @@
 export {metadata} from '@/lib/layout-config'
 import {tilda} from '@/lib/layout-config'
-import '@/app/globals.css'
+import '@/app/(website)/globals.css'
 
 import {FRAME} from '~/Global/Container'
 import {cn} from '@/lib/utils'
