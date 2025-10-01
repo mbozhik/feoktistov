@@ -69,6 +69,7 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    member: Member;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -77,6 +78,7 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    member: MemberSelect<false> | MemberSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -158,6 +160,35 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "member".
+ */
+export interface Member {
+  id: string;
+  name: string;
+  position: ('partner' | 'advocate' | 'lawyer')[];
+  picture: string | Media;
+  contacts: {
+    phone: number;
+    email: string;
+  };
+  education: {
+    degree: string;
+    period: string;
+    id?: string | null;
+  }[];
+  awards: {
+    award: string;
+    id?: string | null;
+  }[];
+  about: {
+    item: string;
+    id?: string | null;
+  }[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -170,6 +201,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: string | Media;
+      } | null)
+    | ({
+        relationTo: 'member';
+        value: string | Member;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -252,6 +287,42 @@ export interface MediaSelect<T extends boolean = true> {
   height?: T;
   focalX?: T;
   focalY?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "member_select".
+ */
+export interface MemberSelect<T extends boolean = true> {
+  name?: T;
+  position?: T;
+  picture?: T;
+  contacts?:
+    | T
+    | {
+        phone?: T;
+        email?: T;
+      };
+  education?:
+    | T
+    | {
+        degree?: T;
+        period?: T;
+        id?: T;
+      };
+  awards?:
+    | T
+    | {
+        award?: T;
+        id?: T;
+      };
+  about?:
+    | T
+    | {
+        item?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

@@ -8,6 +8,7 @@ import {buildConfig} from 'payload'
 
 import {Users} from '@payload/collections/Users'
 import {Media} from '@payload/collections/Media'
+import {Member} from '@payload/collections/Member'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -20,7 +21,7 @@ export default buildConfig({
     },
   },
 
-  collections: [Users, Media],
+  collections: [Users, Media, Member],
   editor: lexicalEditor(),
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
