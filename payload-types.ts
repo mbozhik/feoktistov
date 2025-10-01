@@ -70,6 +70,7 @@ export interface Config {
     users: User;
     media: Media;
     member: Member;
+    news: News;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -79,6 +80,7 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     member: MemberSelect<false> | MemberSelect<true>;
+    news: NewsSelect<false> | NewsSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -167,6 +169,7 @@ export interface Member {
   name: string;
   position: ('partner' | 'advocate' | 'lawyer')[];
   picture: string | Media;
+  slug: string;
   contacts: {
     phone: number;
     email: string;
@@ -189,6 +192,26 @@ export interface Member {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "news".
+ */
+export interface News {
+  id: string;
+  title: string;
+  caption: string;
+  publisher: string;
+  date: string;
+  slug: string;
+  authors: (string | Member)[];
+  source?: {
+    description?: string | null;
+    link?: string | null;
+  };
+  content: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-locked-documents".
  */
 export interface PayloadLockedDocument {
@@ -205,6 +228,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'member';
         value: string | Member;
+      } | null)
+    | ({
+        relationTo: 'news';
+        value: string | News;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -296,6 +323,7 @@ export interface MemberSelect<T extends boolean = true> {
   name?: T;
   position?: T;
   picture?: T;
+  slug?: T;
   contacts?:
     | T
     | {
@@ -321,6 +349,27 @@ export interface MemberSelect<T extends boolean = true> {
         item?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "news_select".
+ */
+export interface NewsSelect<T extends boolean = true> {
+  title?: T;
+  caption?: T;
+  publisher?: T;
+  date?: T;
+  slug?: T;
+  authors?: T;
+  source?:
+    | T
+    | {
+        description?: T;
+        link?: T;
+      };
+  content?: T;
   updatedAt?: T;
   createdAt?: T;
 }

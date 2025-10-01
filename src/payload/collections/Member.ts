@@ -41,6 +41,22 @@ export const Member: CollectionConfig = {
       required: true,
     },
     {
+      name: 'slug',
+      type: 'text',
+      admin: {
+        components: {
+          Field: {
+            path: '/src/payload/ui/slug-field.tsx',
+            exportName: 'SlugField',
+            clientProps: {
+              source: 'name',
+            },
+          },
+        },
+      },
+      required: true,
+    },
+    {
       name: 'contacts',
       type: 'group',
       fields: [
