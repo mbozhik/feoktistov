@@ -9,12 +9,19 @@ import {PATHS} from '@/lib/constants'
 import {cn} from '@/lib/utils'
 import {useMediaQuery} from '@/hooks/use-media-query'
 
+import {usePathname} from 'next/navigation'
+
 import Link from 'next/link'
 import Image from 'next/image'
 import {H2, SPAN} from '~/UI/Typography'
 
 export default function Header() {
   const isDesktop = useMediaQuery('(min-width: 768px)')
+  const pathname = usePathname()
+
+  if (pathname.includes('/admin')) {
+    return null
+  }
 
   return (
     <header className={cn('grid grid-cols-2 sm:grid-cols-1', 'bg-background', 'border-x sm:border-x-0')}>
