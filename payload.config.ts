@@ -6,10 +6,11 @@ import {lexicalEditor} from '@payloadcms/richtext-lexical'
 import {mongooseAdapter} from '@payloadcms/db-mongodb'
 import {buildConfig} from 'payload'
 
-import {Users} from '@payload/collections/Users'
-import {Media} from '@payload/collections/Media'
-import {Member} from '@payload/collections/Member'
+import {Members} from '@/payload/collections/Members'
+import {Projects} from '@payload/collections/Projects'
 import {News} from '@payload/collections/News'
+import {Media} from '@payload/collections/Media'
+import {Users} from '@payload/collections/Users'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -22,7 +23,7 @@ export default buildConfig({
     },
   },
 
-  collections: [Users, Media, Member, News],
+  collections: [Members, Projects, News, Media, Users],
   editor: lexicalEditor(),
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),

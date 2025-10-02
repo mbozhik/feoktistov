@@ -68,7 +68,7 @@ type DeprecatedFieldEntry = {required: boolean}
 // If we accept both values, we are forced to have two rendering paths.
 type SlugFieldInputProps = TextInputProps & {hasMany: false; source: string; field: DeprecatedFieldEntry}
 
-const SlugField = (props: SlugFieldInputProps) => {
+export const SlugField = (props: SlugFieldInputProps) => {
   const {
     path,
     source,
@@ -111,5 +111,3 @@ const SlugField = (props: SlugFieldInputProps) => {
 
   return <TextInput {...noSource} label={label} onChange={handleChange} path={path} required={required} Error={error} showError={showError} value={value} />
 }
-
-export {SlugField}

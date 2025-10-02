@@ -48,7 +48,7 @@ export const News: CollectionConfig = {
     {
       name: 'authors',
       type: 'relationship',
-      relationTo: 'member',
+      relationTo: 'members',
       hasMany: true,
       required: true,
     },

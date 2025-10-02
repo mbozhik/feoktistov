@@ -13,6 +13,9 @@ export const Media: CollectionConfig = {
       name: 'alt',
       type: 'text',
       required: true,
+      admin: {
+        description: 'Добавьте "projects icon – *" в название для файлов-иконок проектов',
+      },
     },
   ],
   upload: true,
