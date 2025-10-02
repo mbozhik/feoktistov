@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
     "dev:safe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
