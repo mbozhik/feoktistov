@@ -4,7 +4,7 @@ import Projects from '~~/index/Projects'
 
 export default function Home() {
   return (
-    <Container>
+    <Container offset={false}>
       <Media token="overview" />
       <Projects />
       <Media token="sequence" />
