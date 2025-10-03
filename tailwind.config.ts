@@ -22,7 +22,10 @@ export default {
         dark: '#1C253B',
         black: '#091423',
       },
-      gray: '#D4D4D4',
+      gray: {
+        DEFAULT: '#D4D4D4',
+        medium: '#7D7D7D',
+      },
       destructive: '#FF5757',
 
       black: colors.black,
