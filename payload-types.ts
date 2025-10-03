@@ -69,6 +69,7 @@ export interface Config {
   collections: {
     members: Member;
     projects: Project;
+    'project-categories': ProjectCategory;
     news: News;
     media: Media;
     users: User;
@@ -80,6 +81,7 @@ export interface Config {
   collectionsSelect: {
     members: MembersSelect<false> | MembersSelect<true>;
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
+    'project-categories': ProjectCategoriesSelect<false> | ProjectCategoriesSelect<true>;
     news: NewsSelect<false> | NewsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
@@ -179,21 +181,7 @@ export interface Project {
   id: string;
   definition: string;
   type: 'defense' | 'attack';
-  /**
-   * Выберите категорию проекта
-   */
-  category?:
-    | (
-        | 'criminal-bankruptcy'
-        | 'criminal-assets'
-        | 'criminal-executives'
-        | 'criminal-property'
-        | 'criminal-managers'
-        | 'criminal-creditors'
-        | 'criminal-deals'
-        | 'criminal-abuses'
-      )
-    | null;
+  category: string | ProjectCategory;
   icon: string | Media;
   slug: string;
   team: {
@@ -201,6 +189,19 @@ export interface Project {
     role: 'advocate' | 'lawyer';
     id?: string | null;
   }[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "project-categories".
+ */
+export interface ProjectCategory {
+  id: string;
+  type: 'defense' | 'attack';
+  definition: string;
+  description: string;
+  slug: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -262,6 +263,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'projects';
         value: string | Project;
+      } | null)
+    | ({
+        relationTo: 'project-categories';
+        value: string | ProjectCategory;
       } | null)
     | ({
         relationTo: 'news';
@@ -371,6 +376,18 @@ export interface ProjectsSelect<T extends boolean = true> {
         role?: T;
         id?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "project-categories_select".
+ */
+export interface ProjectCategoriesSelect<T extends boolean = true> {
+  type?: T;
+  definition?: T;
+  description?: T;
+  slug?: T;
   updatedAt?: T;
   createdAt?: T;
 }

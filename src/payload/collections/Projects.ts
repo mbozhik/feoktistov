@@ -25,27 +25,16 @@ export const Projects: CollectionConfig = {
     },
     {
       name: 'category',
-      type: 'select',
+      type: 'relationship',
+      relationTo: 'project-categories',
       required: true,
-      options: [
-        {label: 'Уголовные дела, связанные с банкротством', value: 'criminal-bankruptcy'},
-        {label: 'Уголовные дела, связанные с активами', value: 'criminal-assets'},
-        {label: 'Уголовные дела, связанные с руководителями', value: 'criminal-executives'},
-        {label: 'Уголовные дела, связанные с собственностью', value: 'criminal-property'},
-        {label: 'Уголовные дела, связанные с управляющими', value: 'criminal-managers'},
-        {label: 'Уголовные дела, связанные с кредиторами', value: 'criminal-creditors'},
-        {label: 'Уголовные дела, связанные с сделками', value: 'criminal-deals'},
-        {label: 'Уголовные дела, связанные с злоупотреблениями', value: 'criminal-abuses'},
-      ],
-      admin: {
-        components: {
-          Field: {
-            path: '/src/payload/ui/project-category-field.tsx',
-            exportName: 'ProjectCategoryField',
-          },
-        },
-        condition: (_, {type}) => !!type,
-        description: 'Выберите категорию проекта',
+      filterOptions: ({data}) => {
+        if (!data?.type) {
+          return true // Показываем все категории если тип не выбран
+        }
+        return {
+          type: {equals: data.type},
+        }
       },
     },
     {

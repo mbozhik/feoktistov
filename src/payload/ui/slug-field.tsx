@@ -21,10 +21,21 @@ const transliterate = (text: string): string => {
 }
 
 const slugify = (value: string) =>
-  transliterate(value)
-    .replace(/[^\-a-z0-9]/g, ' ')
-    .trim()
-    .replace(/\s+/g, '-')
+  value
+    .split(/[\s,;.!?()[\]{}"'`]+/) // Разбиваем по пробелам и знакам препинания
+    .map((word) => {
+      // Проверяем, содержит ли слово русские буквы
+      const hasRussian = /[а-яё]/i.test(word)
+      if (hasRussian) {
+        return transliterate(word)
+      } else {
+        // Для английских слов оставляем только буквы и цифры
+        return word.toLowerCase().replace(/[^a-z0-9]/g, '')
+      }
+    })
+    .filter((word) => word.length > 0) // Убираем пустые слова
+    .join('-') // Соединяем дефисами
+    .replace(/^-+|-+$/g, '') // Удаляем дефисы в начале и конце
 
 const isEmpty = (value: unknown) => value === null || value === undefined
 const isBlank = (value: string | null | undefined) => isEmpty(value) || value === ''
