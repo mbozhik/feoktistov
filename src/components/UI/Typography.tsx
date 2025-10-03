@@ -22,12 +22,20 @@ type MotionElementType = {
 export type TypoTypes = keyof typeof TYPO_CLASSES
 
 export const TYPO_CLASSES = {
+  h1: cn('text-[100px] xl:text-7xl sm:text-4xl', '!leading-[1]', 'font-bold', 'uppercase text-blue-medium'),
   h2: cn('text-[70px] xl:text-6xl sm:text-4xl', '!leading-[1]', 'text-blue-medium'),
+  h3: cn('text-[40px] xl:text-3xl sm:text-2xl', '!leading-[1.1]', 'font-medium', 'text-blue-light'),
+  h4: cn('text-4xl xl:text-2xl sm:text-lg', '!leading-[1.2]', 'text-blue-dark'),
   span: cn('text-2xl xl:text-xl sm:text-lg', 'font-medium', 'text-blue-black'),
+  small: cn('text-xl xl:text-lg sm:text-base', '!leading-[1.4]'),
 } as const
 
+export const H1 = createTypography('h1')
 export const H2 = createTypography('h2')
+export const H3 = createTypography('h3')
+export const H4 = createTypography('h4')
 export const SPAN = createTypography('span')
+export const SMALL = createTypography('small')
 
 export const CONFIG = {
   animations: {

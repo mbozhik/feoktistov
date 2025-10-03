@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="ru">
+    <html lang="ru" className="scroll-smooth">
       <body className={cn(tilda.variable, FRAME, 'bg-background-gray text-black', 'font-sans antialiased')}>
         <Header />
         {children}
