@@ -1,4 +1,4 @@
-import type {Member, Media} from '@payload-types'
+import type {Member, Media, ProjectCategory} from '@payload-types'
 
 export function decomposeMember(member: string | Member) {
   // If member is not provided or empty
@@ -92,5 +92,38 @@ export function decomposeMedia(media: string | Media | null | undefined) {
     filename: media.filename || null,
     mimeType: media.mimeType || null,
     filesize: media.filesize || null,
+  }
+}
+
+export function decomposeProjectCategory(category: string | ProjectCategory | null | undefined) {
+  // If category is not provided or empty
+  if (!category) {
+    return {
+      id: '',
+      type: 'defense' as const,
+      definition: '',
+      description: '',
+      slug: '',
+    }
+  }
+
+  // If category is a string (ID of category)
+  if (typeof category === 'string') {
+    return {
+      id: category,
+      type: 'defense' as const,
+      definition: '',
+      description: '',
+      slug: '',
+    }
+  }
+
+  // If category is a ProjectCategory object from PayloadCMS
+  return {
+    id: category.id,
+    type: category.type,
+    definition: category.definition,
+    description: category.description,
+    slug: category.slug,
   }
 }

@@ -22,9 +22,14 @@ export default async function ProjectsPage() {
     overrideAccess: false,
   })
 
+  const categories = await payload.find({
+    collection: 'project-categories',
+    limit: 12,
+  })
+
   return (
     <Container>
-      <Grid projects={projects.docs} />
+      <Grid projects={projects.docs} categories={categories.docs} />
     </Container>
   )
 }

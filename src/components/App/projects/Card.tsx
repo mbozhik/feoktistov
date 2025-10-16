@@ -22,9 +22,9 @@ function getRole(role: Project['team'][number]['role']) {
 
 export const CARD_PADDING = 'p-8 xl:px-6 xl:py-5 sm:px-3 sm:py-4'
 
-export default function Card({project}: {project: Project}) {
+export default function Card({project, className}: {project: Project; className?: string}) {
   return (
-    <div data-slot="card-grid-projects" className={cn(CARD_PADDING, 'flex flex-col justify-between gap-10 xl:gap-8 sm:gap-5')} key={project.id}>
+    <div data-slot="card-grid-projects" className={cn(CARD_PADDING, 'flex flex-col justify-between gap-10 xl:gap-8 sm:gap-5', className)} key={project.id}>
       <div className="flex flex-col gap-8 sm:gap-4">
         <PayloadImage resource={project.icon} className="!block size-16 xl:size-14 sm:size-13" />
 
