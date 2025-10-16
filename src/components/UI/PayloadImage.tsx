@@ -4,6 +4,7 @@ import type {StaticImageData} from 'next/image'
 import type {Media as MediaType} from '@payload-types'
 
 import {cn} from '@/lib/utils'
+import {decomposeMedia} from '@/utils/decompose-relationship'
 
 import Image from 'next/image'
 
@@ -24,7 +25,7 @@ interface Props {
   onClick?: () => void
   onLoad?: () => void
   loading?: 'lazy' | 'eager' // for NextImage only
-  resource?: MediaType | string | number | null // for Payload media
+  resource?: MediaType | string | null | undefined // for Payload media
   size?: string // for NextImage only
   src?: StaticImageData | string // for static media or direct URLs
 }
@@ -36,13 +37,13 @@ export default function PayloadImage({src, alt, width = 100, height = 100, class
   let imageWidth = width
   let imageHeight = height
 
-  // If resource is passed (PayloadCMS Media object)
-  if (resource && typeof resource === 'object' && 'url' in resource) {
-    const mediaResource = resource as MediaType
-    imageSrc = mediaResource.url || ''
-    imageAlt = alt || mediaResource.alt || ''
-    imageWidth = mediaResource.width || width
-    imageHeight = mediaResource.height || height
+  // If resource is passed (PayloadCMS Media object), decompose it
+  if (resource) {
+    const mediaData = decomposeMedia(resource)
+    imageSrc = mediaData.url || ''
+    imageAlt = alt || mediaData.alt || ''
+    imageWidth = mediaData.width || width
+    imageHeight = mediaData.height || height
   }
 
   // If there is no image source
