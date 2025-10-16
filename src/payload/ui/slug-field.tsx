@@ -1,41 +1,17 @@
 'use client'
 
-import React, {ChangeEvent, useEffect, useState} from 'react'
 import {formatLabels} from 'payload/shared'
+import React, {ChangeEvent, useEffect, useState} from 'react'
+import slug from 'slug'
+
 import {FieldError, TextInput, type TextInputProps, useField, useFormFields} from '@payloadcms/ui'
 
-const transliterate = (text: string): string => {
-  const translitMap: {[key: string]: string} = {
-    а: 'a', б: 'b', в: 'v', г: 'g', д: 'd', е: 'e', ё: 'yo',
-    ж: 'zh', з: 'z', и: 'i', й: 'y', к: 'k', л: 'l', м: 'm',
-    н: 'n', о: 'o', п: 'p', р: 'r', с: 's', т: 't', у: 'u',
-    ф: 'f', х: 'kh', ц: 'ts', ч: 'ch', ш: 'sh', щ: 'sch',
-    ъ: '', ы: 'y', ь: '', э: 'e', ю: 'yu', я: 'ya'
-  }
-
-  return text
-    .toLowerCase()
-    .split('')
-    .map((char) => translitMap[char] || char)
-    .join('')
+const slugify = (value: string) => {
+  return slug(value, {
+    lower: true, // All in lowercase
+    remove: /[^\w\s-]/g, // Remove all characters except letters, numbers, spaces and dashes
+  })
 }
-
-const slugify = (value: string) =>
-  value
-    .split(/[\s,;.!?()[\]{}"'`]+/) // Разбиваем по пробелам и знакам препинания
-    .map((word) => {
-      // Проверяем, содержит ли слово русские буквы
-      const hasRussian = /[а-яё]/i.test(word)
-      if (hasRussian) {
-        return transliterate(word)
-      } else {
-        // Для английских слов оставляем только буквы и цифры
-        return word.toLowerCase().replace(/[^a-z0-9]/g, '')
-      }
-    })
-    .filter((word) => word.length > 0) // Убираем пустые слова
-    .join('-') // Соединяем дефисами
-    .replace(/^-+|-+$/g, '') // Удаляем дефисы в начале и конце
 
 const isEmpty = (value: unknown) => value === null || value === undefined
 const isBlank = (value: string | null | undefined) => isEmpty(value) || value === ''
@@ -66,7 +42,7 @@ const validateSlug = (value: string | null) => {
   const isValidSlug = /^[a-z0-9-]+$/.test(slugified)
 
   if (!isValidSlug) {
-    return 'Slug must be lowercase, and can only contain letters, numbers and dashes'
+    return 'Slug должен быть в нижнем регистре и содержать только буквы, цифры и дефисы'
   }
 
   return true
