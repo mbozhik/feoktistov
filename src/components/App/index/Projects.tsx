@@ -1,5 +1,5 @@
 import type {ProjectCategory} from '@payload-types'
-import {GRID_CONFIG} from '@/lib/constants'
+import {GRID_CONFIG, GRID_CELL} from '@/lib/constants'
 import configPromise from '@payload-config'
 
 import {cn} from '@/lib/utils'
@@ -20,9 +20,9 @@ function CategoryBlock({type, categories}: {type: ProjectType; categories: Proje
         <H4 className={cn('max-w-[30ch]', type === 'defense' ? 'text-right sm:text-left' : 'text-left')}>{type === 'defense' ? 'Уголовно-правовая защита по экономическим и должностным преступлениям' : 'Уголовно-правовая защита по экономическим и должностным преступлениям'}</H4>
       </Division>
 
-      <div className={cn(GRID_CONFIG, 'grid-cols-4')}>
-        {categories.map((category) => (
-          <ProjectsCategoryCard category={category} key={category.id} />
+      <div className={cn(GRID_CONFIG, 'grid-cols-4 divide-y-0')}>
+        {categories.map((category, idx) => (
+          <ProjectsCategoryCard category={category} className={GRID_CELL(idx, 4)} key={category.id} />
         ))}
       </div>
     </div>

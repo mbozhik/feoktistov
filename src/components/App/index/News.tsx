@@ -1,7 +1,5 @@
 import configPromise from '@payload-config'
-import {GRID_CONFIG} from '@/lib/constants'
-
-import {cn} from '@/lib/utils'
+import {GRID_CONFIG, GRID_CELL} from '@/lib/constants'
 
 import {getPayload} from 'payload'
 
@@ -28,8 +26,8 @@ export default async function News() {
       </Division>
 
       <div className={GRID_CONFIG}>
-        {news.docs.map((newsItem) => (
-          <Card news={newsItem} key={newsItem.id} className={cn(news.docs.length < 3 && 'last:border-r')} />
+        {news.docs.map((newsItem, idx) => (
+          <Card news={newsItem} key={newsItem.id} className={GRID_CELL(idx)} />
         ))}
       </div>
     </section>

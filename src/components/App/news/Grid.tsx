@@ -1,7 +1,7 @@
 'use client'
 
 import type {News} from '@payload-types'
-import {GRID_CONFIG} from '@/lib/constants'
+import {GRID_CONFIG, GRID_CELL} from '@/lib/constants'
 
 import {cn} from '@/lib/utils'
 
@@ -71,8 +71,8 @@ export default function Grid({news}: {news: News[]}) {
 
       {filteredNews.length > 0 ? (
         <div data-block="items-grid-news" className={GRID_CONFIG}>
-          {filteredNews.map((newsItem) => (
-            <Card news={newsItem} key={newsItem.id} className={cn(filteredNews.length < 4 && 'last:border-r')} />
+          {filteredNews.map((newsItem, idx) => (
+            <Card news={newsItem} key={newsItem.id} className={GRID_CELL(idx)} />
           ))}
         </div>
       ) : (

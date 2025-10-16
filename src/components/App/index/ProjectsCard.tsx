@@ -27,11 +27,11 @@ const ANIM = {
   },
 }
 
-export default function ProjectsCard({category}: {category: ProjectCategory}) {
+export default function ProjectsCard({category, className}: {category: ProjectCategory; className?: string}) {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
-    <div data-slot="card-category-projects" className="flex flex-col">
+    <div data-slot="card-category-projects" className={cn('flex flex-col', className)}>
       <div className={cn(CARD, 'space-y-24 xl:space-y-12 sm:space-y-4', 'flex-1', 'flex flex-col justify-between')}>
         <H3>{category.definition}</H3>
         <SMALL className="text-gray-medium sm:font-light">{category.description}</SMALL>
