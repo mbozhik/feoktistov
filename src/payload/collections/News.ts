@@ -30,6 +30,23 @@ export const News: CollectionConfig = {
       required: true,
     },
     {
+      name: 'authors',
+      type: 'relationship',
+      relationTo: 'members',
+      hasMany: true,
+      required: true,
+    },
+    {
+      name: 'type',
+      type: 'select',
+      options: [
+        {label: 'Новости', value: 'news'},
+        {label: 'Медиа', value: 'media'},
+        {label: 'Аналитика', value: 'analytics'},
+      ],
+      required: true,
+    },
+    {
       name: 'slug',
       type: 'text',
       admin: {
@@ -45,13 +62,7 @@ export const News: CollectionConfig = {
       },
       required: true,
     },
-    {
-      name: 'authors',
-      type: 'relationship',
-      relationTo: 'members',
-      hasMany: true,
-      required: true,
-    },
+
     {
       name: 'source',
       type: 'group',

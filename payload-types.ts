@@ -216,8 +216,9 @@ export interface News {
   caption: string;
   publisher: string;
   date: string;
-  slug: string;
   authors: (string | Member)[];
+  type: 'news' | 'media' | 'analytics';
+  slug: string;
   source?: {
     description?: string | null;
     link?: string | null;
@@ -402,8 +403,9 @@ export interface NewsSelect<T extends boolean = true> {
   caption?: T;
   publisher?: T;
   date?: T;
-  slug?: T;
   authors?: T;
+  type?: T;
+  slug?: T;
   source?:
     | T
     | {

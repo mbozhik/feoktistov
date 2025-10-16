@@ -19,7 +19,6 @@ export default async function ProjectsPage() {
     collection: 'projects',
     depth: 1,
     limit: 100,
-    overrideAccess: false,
   })
 
   const categories = await payload.find({

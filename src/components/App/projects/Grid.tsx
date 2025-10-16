@@ -114,7 +114,7 @@ export default function Grid({projects, categories}: {projects: Project[]; categ
           ))}
         </div>
       ) : (
-        <div className={cn('py-[20vh] sm:py-[15vh]', 'flex flex-col items-center justify-center gap-2', 'bg-background')}>
+        <div data-block="empty-grid-projects" className={cn('py-[20vh] sm:py-[15vh]', 'flex flex-col items-center justify-center gap-2', 'bg-background')}>
           <H3>{selectedCategory ? 'Проекты не найдены' : 'Проекты отсутствуют'}</H3>
 
           <SMALL className="!text-base text-center max-w-md">
