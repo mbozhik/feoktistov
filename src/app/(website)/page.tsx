@@ -1,6 +1,7 @@
 import Container from '~/Global/Container'
 import Media from '~~/index/Media'
 import Projects from '~~/index/Projects'
+import News from '~~/index/News'
 
 export default function Home() {
   return (
@@ -8,7 +9,7 @@ export default function Home() {
       <Media token="overview" />
       <Projects />
       <Media token="sequence" />
-      <div className="bg-background">snable.website</div>
+      <News />
     </Container>
   )
 }
