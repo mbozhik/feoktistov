@@ -2,23 +2,12 @@ import {ArrowRight} from 'lucide-react'
 
 import type {Project} from '@payload-types'
 
-import {cn} from '@/lib/utils'
+import {cn, getRole} from '@/lib/utils'
 import {decomposeMember} from '@/utils/decompose-relationship'
 
 import Link from 'next/link'
 import PayloadImage from '~/UI/PayloadImage'
 import {SMALL} from '~/UI/Typography'
-
-function getRole(role: Project['team'][number]['role']) {
-  switch (role) {
-    case 'advocate':
-      return 'Адвокат'
-    case 'lawyer':
-      return 'Юрист'
-    default:
-      return 'Неизвестно'
-  }
-}
 
 export const CARD = 'p-8 xl:px-6 xl:py-5 sm:px-3 sm:py-4'
 

@@ -1,9 +1,10 @@
 import type {Member, Media, ProjectCategory} from '@payload-types'
 
-export function decomposeMember(member: string | Member) {
+export function decomposeMember(member: string | Member | null | undefined) {
   // If member is not provided or empty
   if (!member) {
     return {
+      id: '',
       name: '',
       position: [],
       picture: null,
@@ -15,9 +16,10 @@ export function decomposeMember(member: string | Member) {
     }
   }
 
-  // If member is a string (direct URL)
+  // If member is a string (could be name or ID)
   if (typeof member === 'string') {
     return {
+      id: member,
       name: member,
       position: [],
       picture: null,
@@ -31,6 +33,7 @@ export function decomposeMember(member: string | Member) {
 
   // If member is a Member object from PayloadCMS
   return {
+    id: member.id,
     name: member.name,
     position: member.position,
     picture: member.picture,
