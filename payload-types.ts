@@ -189,6 +189,7 @@ export interface Project {
     role: 'advocate' | 'lawyer';
     id?: string | null;
   }[];
+  mention?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -376,6 +377,7 @@ export interface ProjectsSelect<T extends boolean = true> {
         role?: T;
         id?: T;
       };
+  mention?: T;
   updatedAt?: T;
   createdAt?: T;
 }

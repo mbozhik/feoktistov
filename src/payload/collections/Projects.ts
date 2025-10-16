@@ -86,5 +86,9 @@ export const Projects: CollectionConfig = {
       ],
       required: true,
     },
+    {
+      name: 'mention',
+      type: 'text',
+    },
   ],
 }
