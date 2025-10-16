@@ -26,8 +26,8 @@ export const TYPO_CLASSES = {
   h2: cn('text-[70px] xl:text-6xl sm:text-4xl', '!leading-[1]', 'text-blue-medium'),
   h3: cn('text-[40px] xl:text-3xl sm:text-2xl', '!leading-[1.1]', 'font-medium', 'text-blue-light'),
   h4: cn('text-4xl xl:text-2xl sm:text-lg', '!leading-[1.2]', 'text-blue-dark'),
-  span: cn('text-2xl xl:text-xl sm:text-lg', 'font-medium', 'text-blue-black'),
-  small: cn('text-xl xl:text-lg sm:text-base', '!leading-[1.4]'),
+  span: cn('text-2xl xl:text-xl sm:text-lg', 'font-medium', 'text-blue-black', 'block'),
+  small: cn('text-xl xl:text-lg sm:text-base', '!leading-[1.4]', 'block'),
 } as const
 
 export const H1 = createTypography('h1')

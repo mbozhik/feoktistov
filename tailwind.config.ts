@@ -24,6 +24,7 @@ export default {
       },
       gray: {
         DEFAULT: '#D4D4D4',
+        blue: '#B7BAC1',
         medium: '#7D7D7D',
       },
       destructive: '#FF5757',
