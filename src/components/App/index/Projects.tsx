@@ -1,4 +1,5 @@
 import type {ProjectCategory} from '@payload-types'
+import {GRID_CONFIG} from '@/lib/constants'
 import configPromise from '@payload-config'
 
 import {cn} from '@/lib/utils'
@@ -7,7 +8,7 @@ import {getPayload} from 'payload'
 
 import Division from '~/UI/Division'
 import {H4} from '~/UI/Typography'
-import ProjectsCategory from '~~/index/ProjectsCategory'
+import ProjectsCategoryCard from '~~/index/ProjectsCard'
 
 type ProjectType = ProjectCategory['type']
 
@@ -19,9 +20,9 @@ function CategoryBlock({type, categories}: {type: ProjectType; categories: Proje
         <H4 className={cn('max-w-[30ch]', type === 'defense' ? 'text-right sm:text-left' : 'text-left')}>{type === 'defense' ? 'Уголовно-правовая защита по экономическим и должностным преступлениям' : 'Уголовно-правовая защита по экономическим и должностным преступлениям'}</H4>
       </Division>
 
-      <div className="grid grid-cols-4 sm:grid-cols-1 divide-x sm:divide-x-0 sm:divide-y">
+      <div className={cn(GRID_CONFIG, 'grid-cols-4')}>
         {categories.map((category) => (
-          <ProjectsCategory category={category} key={category.id} />
+          <ProjectsCategoryCard category={category} key={category.id} />
         ))}
       </div>
     </div>

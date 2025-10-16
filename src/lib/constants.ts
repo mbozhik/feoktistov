@@ -18,3 +18,5 @@ export const PATHS = {
     },
   },
 }
+
+export const GRID_CONFIG = 'grid grid-cols-3 sm:grid-cols-1 divide-x bg-background sm:divide-x-0 sm:divide-y'

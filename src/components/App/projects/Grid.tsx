@@ -1,6 +1,7 @@
 'use client'
 
 import type {Project, ProjectCategory} from '@payload-types'
+import {GRID_CONFIG} from '@/lib/constants'
 
 import {cn} from '@/lib/utils'
 import {decomposeProjectCategory} from '@/utils/decompose-relationship'
@@ -107,9 +108,9 @@ export default function Grid({projects, categories}: {projects: Project[]; categ
       </Division>
 
       {filteredProjects.length > 0 ? (
-        <div data-block="items-grid-projects" className={cn('grid grid-cols-3 sm:grid-cols-1', 'divide-x bg-background sm:divide-x-0 sm:divide-y')}>
+        <div data-block="items-grid-projects" className={GRID_CONFIG}>
           {filteredProjects.map((project) => (
-            <Card project={project} key={project.id} className={cn(filteredProjects.length < 3 && 'last:border-r')} />
+            <Card project={project} key={project.id} className={cn(filteredProjects.length < 4 && 'last:border-r')} />
           ))}
         </div>
       ) : (
