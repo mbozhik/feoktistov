@@ -14,7 +14,7 @@ import Link from 'next/link'
 import {H3, P, SMALL} from '~/UI/Typography'
 
 const ANIM = {
-  size: 'size-24 xl:size-16 sm:size-10',
+  size: 'size-24 xl:size-14 sm:size-10',
   shift: 70,
   transition: {
     duration: 0.4,
@@ -69,7 +69,7 @@ export default function Card({news, className}: {news: News; className?: string}
       </div>
 
       <H3>{news.title}</H3>
-      <P className="text-[#737373] sm:!mt-4">{news.caption}</P>
+      <P className="text-[#737373] xl:!mt-3 sm:!mt-4">{news.caption}</P>
     </Link>
   )
 }
