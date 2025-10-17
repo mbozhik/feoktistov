@@ -13,7 +13,7 @@ export const CARD = 'p-8 xl:px-6 xl:py-5 sm:px-3 sm:py-4'
 
 export default function Card({project, className}: {project: Project; className?: string}) {
   return (
-    <div data-slot="projects-card" className={cn(CARD, 'flex flex-col justify-between gap-10 xl:gap-8 sm:gap-5', className)} key={project.id}>
+    <div data-slot="project-card" className={cn(CARD, 'flex flex-col justify-between gap-10 xl:gap-8 sm:gap-5', className)} key={project.id}>
       <div className="flex flex-col gap-8 sm:gap-4">
         <PayloadImage resource={project.icon} className="!block size-16 xl:size-14 sm:size-13" />
 

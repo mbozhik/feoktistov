@@ -77,7 +77,7 @@ export default async function NewsItemPage({params}: Props) {
         {limitedAuthors.map((author) => {
           const authorData = decomposeMember(author)
           return (
-            <Link data-slot="author-news" href={`/members/${authorData.slug}`} className={cn(CELL, 'relative', 'flex flex-col gap-2', 'group')} key={authorData.id}>
+            <Link data-slot="author-news" href={`/team/${authorData.slug}`} className={cn(CELL, 'relative', 'flex flex-col gap-2', 'group')} key={authorData.id}>
               <div className="w-full h-[55vh] sm:h-auto overflow-hidden">
                 <PayloadImage resource={authorData.picture} className="block size-full object-cover object-top group-hover:scale-102 duration-300" />
               </div>
