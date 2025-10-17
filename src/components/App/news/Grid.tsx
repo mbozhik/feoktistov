@@ -70,7 +70,7 @@ export default function Grid({news}: {news: News[]}) {
       </Division>
 
       {filteredNews.length > 0 ? (
-        <div data-block="items-grid-news" className={GRID_CONFIG}>
+        <div data-block="items-grid-news" className={GRID_CONFIG(3, filteredNews.length)}>
           {filteredNews.map((newsItem, idx) => (
             <Card news={newsItem} key={newsItem.id} className={GRID_CELL(idx)} />
           ))}

@@ -13,7 +13,7 @@ export default function Grid({members}: {members: Member[]}) {
       <Division token="division-grid-members" title="Команда" />
 
       {members.length > 0 ? (
-        <div data-block="items-grid-members" className={cn(GRID_CONFIG, 'grid-cols-4 gap-8 xl:gap-6 sm:gap-4', 'p-12 xl:py-10 sm:p-2', '!divide-y-0')}>
+        <div data-block="items-grid-members" className={cn(GRID_CONFIG(4, members.length), 'gap-8 xl:gap-6 sm:gap-4', 'p-12 xl:py-10 sm:p-2', '!divide-y-0')}>
           {members.map((member) => (
             <Card member={member} key={member.id} />
           ))}

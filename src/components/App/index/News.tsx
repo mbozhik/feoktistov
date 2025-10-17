@@ -25,7 +25,7 @@ export default async function News() {
         </Link>
       </Division>
 
-      <div className={GRID_CONFIG}>
+      <div className={GRID_CONFIG(3, news.docs.length)}>
         {news.docs.map((newsItem, idx) => (
           <Card news={newsItem} key={newsItem.id} className={GRID_CELL(idx)} />
         ))}

@@ -108,7 +108,7 @@ export default function Grid({projects, categories}: {projects: Project[]; categ
       </Division>
 
       {filteredProjects.length > 0 ? (
-        <div data-block="items-grid-projects" className={GRID_CONFIG}>
+        <div data-block="items-grid-projects" className={GRID_CONFIG(3, filteredProjects.length)}>
           {filteredProjects.map((project, idx) => (
             <Card project={project} key={project.id} className={GRID_CELL(idx)} />
           ))}

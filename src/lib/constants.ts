@@ -21,6 +21,12 @@ export const PATHS = {
   },
 }
 
-export const GRID_CONFIG = 'grid grid-cols-3 sm:grid-cols-1 bg-background divide-y sm:divide-y'
+export const GRID_CONFIG = (cols: number = 3, length: number) => {
+  const baseClasses = 'grid sm:grid-cols-1 bg-background sm:divide-y'
+  const gridColsClass = cols === 3 ? 'grid-cols-3' : cols === 4 ? 'grid-cols-4' : 'grid-cols-3'
+  const divideClass = length > cols && 'divide-y'
+
+  return cn(baseClasses, gridColsClass, divideClass)
+}
 
 export const GRID_CELL = (idx: number, number = 3) => cn((idx + 1) % number !== 0 && 'border-r')
