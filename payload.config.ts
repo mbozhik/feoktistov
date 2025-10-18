@@ -10,6 +10,7 @@ import {Members} from '@/payload/collections/Members'
 import {Projects} from '@payload/collections/Projects'
 import {ProjectCategories} from '@/payload/collections/ProjectCategories'
 import {News} from '@payload/collections/News'
+import {Achievements} from '@/payload/collections/Achievements'
 import {Media} from '@payload/collections/Media'
 import {Users} from '@payload/collections/Users'
 
@@ -24,7 +25,7 @@ export default buildConfig({
     },
   },
 
-  collections: [Members, Projects, ProjectCategories, News, Media, Users],
+  collections: [Members, Projects, ProjectCategories, News, Achievements, Media, Users],
   editor: lexicalEditor(),
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),

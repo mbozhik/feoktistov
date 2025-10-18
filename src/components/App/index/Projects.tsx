@@ -20,8 +20,6 @@ function CategoryBlock({type, categories}: {type: ProjectType; categories: Proje
         <H4 className={cn('max-w-[30ch]', type === 'defense' ? 'text-right sm:text-left' : 'text-left')}>{type === 'defense' ? 'Уголовно-правовая защита по экономическим и должностным преступлениям' : 'Уголовно-правовая защита по экономическим и должностным преступлениям'}</H4>
       </Division>
 
-      {categories.length}
-
       <div className={cn(GRID_CONFIG(4, categories.length))}>
         {categories.map((category, idx) => (
           <ProjectsCategoryCard category={category} className={GRID_CELL(idx, 4)} key={category.id} />

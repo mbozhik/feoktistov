@@ -14,7 +14,7 @@ export const Media: CollectionConfig = {
       type: 'text',
       required: true,
       admin: {
-        description: 'Добавьте "projects icon – *" в название для файлов-иконок проектов',
+        description: '"projects icon – *" для иконок проектов, "company icon – *" для иконок компаний (достижения)',
       },
     },
   ],

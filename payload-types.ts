@@ -71,6 +71,7 @@ export interface Config {
     projects: Project;
     'project-categories': ProjectCategory;
     news: News;
+    achievements: Achievement;
     media: Media;
     users: User;
     'payload-locked-documents': PayloadLockedDocument;
@@ -83,6 +84,7 @@ export interface Config {
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
     'project-categories': ProjectCategoriesSelect<false> | ProjectCategoriesSelect<true>;
     news: NewsSelect<false> | NewsSelect<true>;
+    achievements: AchievementsSelect<false> | AchievementsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -158,7 +160,7 @@ export interface Member {
 export interface Media {
   id: string;
   /**
-   * Добавьте "projects icon – *" в название для файлов-иконок проектов
+   * "projects icon – *" для иконок проектов, "company icon – *" для иконок компаний (достижения)
    */
   alt: string;
   updatedAt: string;
@@ -229,6 +231,21 @@ export interface News {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "achievements".
+ */
+export interface Achievement {
+  id: string;
+  company: string | Media;
+  queue: number;
+  items: {
+    item: string;
+    id?: string | null;
+  }[];
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
@@ -273,6 +290,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'news';
         value: string | News;
+      } | null)
+    | ({
+        relationTo: 'achievements';
+        value: string | Achievement;
       } | null)
     | ({
         relationTo: 'media';
@@ -413,6 +434,22 @@ export interface NewsSelect<T extends boolean = true> {
         link?: T;
       };
   content?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "achievements_select".
+ */
+export interface AchievementsSelect<T extends boolean = true> {
+  company?: T;
+  queue?: T;
+  items?:
+    | T
+    | {
+        item?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

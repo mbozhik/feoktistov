@@ -41,12 +41,12 @@ export const Projects: CollectionConfig = {
       name: 'icon',
       type: 'relationship',
       relationTo: 'media',
-      required: true,
       filterOptions: {
         alt: {
           like: 'projects icon',
         },
       },
+      required: true,
     },
     {
       name: 'slug',
