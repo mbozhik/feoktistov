@@ -145,7 +145,7 @@ export default async function NewsItemPage({params}: Props) {
             ))}
           </div>
 
-          <Link href="#contacts" className={cn('w-full py-3 xl:py-2.5', 'flex items-center justify-center gap-1', 'border border-blue-medium text-blue-medium', 'hover:bg-blue-medium/15 duration-300')}>
+          <Link href="#contacts" className={cn('w-full py-3 xl:py-2.5 sm:py-2', 'flex items-center justify-center gap-1', 'border border-blue-medium text-blue-medium', 'hover:bg-blue-medium/15 duration-300')}>
             <SMALL>Связаться</SMALL>
             <ArrowUpRight className="size-6" strokeWidth={1.5} />
           </Link>
