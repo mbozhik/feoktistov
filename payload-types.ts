@@ -133,6 +133,11 @@ export interface Member {
   position: ('partner' | 'advocate' | 'lawyer')[];
   picture: string | Media;
   slug: string;
+  featured: boolean;
+  overview?: {
+    primary: string | Media;
+    secondary: string | Media;
+  };
   contacts: {
     phone: number;
     email: string;
@@ -354,6 +359,13 @@ export interface MembersSelect<T extends boolean = true> {
   position?: T;
   picture?: T;
   slug?: T;
+  featured?: T;
+  overview?:
+    | T
+    | {
+        primary?: T;
+        secondary?: T;
+      };
   contacts?:
     | T
     | {

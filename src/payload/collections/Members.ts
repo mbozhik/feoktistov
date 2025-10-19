@@ -57,6 +57,33 @@ export const Members: CollectionConfig = {
       required: true,
     },
     {
+      name: 'featured',
+      type: 'checkbox',
+      defaultValue: false,
+      required: true,
+    },
+    {
+      name: 'overview',
+      type: 'group',
+      admin: {
+        condition: (_, {featured}) => featured === true,
+      },
+      fields: [
+        {
+          name: 'primary',
+          type: 'upload',
+          relationTo: 'media',
+          required: true,
+        },
+        {
+          name: 'secondary',
+          type: 'upload',
+          relationTo: 'media',
+          required: true,
+        },
+      ],
+    },
+    {
       name: 'contacts',
       type: 'group',
       fields: [
