@@ -138,7 +138,7 @@ export default function Footer() {
             )}
 
             {value.map((item) => (
-              <Link href={item.href} className="block" key={item.href}>
+              <Link href={item.href} className={cn('block w-fit', 'border-b border-transparent hover:border-background-gray duration-300')} key={item.href}>
                 <SMALL offset={0} className={cn(!isHomePage ? 'text-blue-dark' : 'text-gray')}>
                   {item.label}
                 </SMALL>

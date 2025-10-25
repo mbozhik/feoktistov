@@ -153,7 +153,7 @@ export default function Header() {
                 ))}
               </nav>
 
-              <div className={cn('opacity-0 pointer-events-none', 'px-4 xl:px-3.5', 'grid place-items-center cursor-pointer')} onClick={() => alert('Интенционализация в процессе разработки')}>
+              <div className={cn('px-4 xl:px-3.5', 'grid place-items-center cursor-pointer')} onClick={() => alert('Интенционализация в процессе разработки')}>
                 <SPAN offset={0}>EN</SPAN>
               </div>
             </div>
