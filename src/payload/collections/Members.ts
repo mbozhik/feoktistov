@@ -122,8 +122,26 @@ export const Members: CollectionConfig = {
       type: 'array',
       fields: [
         {
-          name: 'award',
-          type: 'text',
+          name: 'items',
+          type: 'array',
+          fields: [
+            {
+              name: 'title',
+              type: 'text',
+              required: true,
+            },
+          ],
+          required: true,
+        },
+        {
+          name: 'company',
+          type: 'relationship',
+          relationTo: 'media',
+          filterOptions: {
+            alt: {
+              like: 'company icon',
+            },
+          },
           required: true,
         },
       ],

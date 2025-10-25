@@ -106,11 +106,21 @@ export default async function NewsItemPage({params}: Props) {
             ))}
           </Block>
 
-          <Block title="Награды" className="grid grid-cols-3 sm:grid-cols-1 gap-x-16 gap-y-4">
+          <Block title="Награды" className="grid grid-cols-3 sm:grid-cols-1 gap-x-16 xl:gap-x-12 sm:gap-y-8 sm:pt-4">
             {memberItem.awards.map((award) => (
-              <SMALL className="text-blue-medium" key={award.id}>
-                {award.award}
-              </SMALL>
+              <div key={award.id} className="flex flex-col sm:flex-col-reverse justify-between gap-8 sm:gap-4">
+                <div className="flex-1 space-y-4 sm:space-y-2">
+                  {award.items.map((item) => (
+                    <SMALL className="text-blue-medium leading-tight" key={item.id}>
+                      {item.title}
+                    </SMALL>
+                  ))}
+                </div>
+
+                <div className="self-end sm:self-start">
+                  <PayloadImage resource={award.company} className={cn('h-12 xl:h-10 sm:h-12 max-w-[250px] xl:max-w-[200px] sm:max-w-[250px] sm:w-auto', 'object-contain opacity-30')} />
+                </div>
+              </div>
             ))}
           </Block>
 

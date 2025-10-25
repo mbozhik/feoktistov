@@ -71,7 +71,7 @@ export default function AchievementsSlider({achievements}: {achievements: Achiev
 
               {/* Текущий логотип (центр) */}
               <motion.div className="h-96 w-full sm:h-32 flex items-center justify-end sm:justify-center z-10" initial={{opacity: 0, scale: 0.8}} animate={{opacity: 1, scale: 1}} exit={{opacity: 0, scale: 0.8}} transition={{duration: 0.6, ease: 'easeInOut'}} key={`current-${currentIndex}`}>
-                <PayloadImage resource={currentAchievement.company} className="max-w-full max-h-full object-contain filter drop-shadow-lg" />
+                <PayloadImage resource={currentAchievement.company} className="max-w-full max-h-full object-contain" />
               </motion.div>
 
               {/* Следующий логотип (снизу, полупрозрачный) */}

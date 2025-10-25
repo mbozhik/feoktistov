@@ -148,7 +148,11 @@ export interface Member {
     id?: string | null;
   }[];
   awards: {
-    award: string;
+    items: {
+      title: string;
+      id?: string | null;
+    }[];
+    company: string | Media;
     id?: string | null;
   }[];
   about: {
@@ -382,7 +386,13 @@ export interface MembersSelect<T extends boolean = true> {
   awards?:
     | T
     | {
-        award?: T;
+        items?:
+          | T
+          | {
+              title?: T;
+              id?: T;
+            };
+        company?: T;
         id?: T;
       };
   about?:
