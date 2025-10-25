@@ -11,6 +11,7 @@ import {getPayload} from 'payload'
 import Link from 'next/link'
 import Container from '~/Global/Container'
 import PayloadImage from '~/UI/PayloadImage'
+import ContentBlocks from '~~/news/ContentBlocks'
 import {H2, P, SMALL, SPAN} from '~/UI/Typography'
 
 export const dynamic = 'force-static'
@@ -109,7 +110,7 @@ export default async function NewsItemPage({params}: Props) {
       </div>
 
       <div className={cn(BOX.small, '!my-16 xl:!my-14 sm:!my-10')}>
-        <SMALL>{newsItem.content}</SMALL>
+        <ContentBlocks blocks={newsItem.content} />
       </div>
     </Container>
   )
