@@ -152,17 +152,21 @@ export default async function NewsItemPage({params}: Props) {
         </div>
       </div>
 
-      <Block title="Участие в проектах" offset={false} className={GRID_CONFIG(3, memberProjects.docs.length)}>
-        {memberProjects.docs.map((project, idx) => (
-          <ProjectCard variant="member" project={project} key={project.id} className={GRID_CELL(idx)} />
-        ))}
-      </Block>
+      {memberProjects.docs.length > 0 && (
+        <Block title="Участие в проектах" offset={false} className={GRID_CONFIG(3, memberProjects.docs.length)}>
+          {memberProjects.docs.map((project, idx) => (
+            <ProjectCard variant="member" project={project} key={project.id} className={GRID_CELL(idx)} />
+          ))}
+        </Block>
+      )}
 
-      <Block title="Участие в новостях" offset={false} className={GRID_CONFIG(3, memberNews.docs.length)}>
-        {memberNews.docs.map((news, idx) => (
-          <NewsCard news={news} key={news.id} className={GRID_CELL(idx)} />
-        ))}
-      </Block>
+      {memberNews.docs.length > 0 && (
+        <Block title="Участие в новостях" offset={false} className={GRID_CONFIG(3, memberNews.docs.length)}>
+          {memberNews.docs.map((news, idx) => (
+            <NewsCard news={news} key={news.id} className={GRID_CELL(idx)} />
+          ))}
+        </Block>
+      )}
     </Container>
   )
 }
