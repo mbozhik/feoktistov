@@ -79,7 +79,8 @@ export const News: CollectionConfig = {
     },
     {
       name: 'content',
-      type: 'textarea',
+      type: 'blocks',
+      blocks: [RichTextBlock, ImageTextBlock, ImageBlock, QuoteBlock],
       required: true,
     },
   ],
