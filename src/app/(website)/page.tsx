@@ -7,7 +7,7 @@ import Team from '~~/index/Team'
 
 export default function Home() {
   return (
-    <Container offset={false}>
+    <Container offset={false} className="border-b-0">
       <Media token="overview" />
       <Projects />
       <Media token="sequence" />

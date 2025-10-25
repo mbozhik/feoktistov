@@ -1,7 +1,6 @@
 'use client'
 
 import LogoInvertedIcon from '$/logo-inverted.svg'
-import {ArrowUpRight} from 'lucide-react'
 
 import {cn} from '@/lib/utils'
 
@@ -11,6 +10,7 @@ import {useForm} from 'react-hook-form'
 
 import Link from 'next/link'
 import Image from 'next/image'
+import AnimatedArrow from '~/UI/AnimatedArrow'
 import {H1, SMALL, TYPO_CLASSES} from '~/UI/Typography'
 
 const LINKS = {
@@ -66,6 +66,7 @@ export type FormFields = {
 export default function Footer() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [buttonText, setButtonText] = useState('Отправить форму')
+  const [isButtonHovered, setIsButtonHovered] = useState(false)
 
   const {register, handleSubmit, reset} = useForm<FormFields>()
   const pathname = usePathname()
@@ -120,9 +121,20 @@ export default function Footer() {
 
             <textarea rows={2} className={INPUT_CLASSES} placeholder="Чем я могу помочь?" {...register('message')} />
 
-            <button type="submit" disabled={isSubmitting} className={cn('w-full py-3 xl:py-2.5 sm:py-2', 'flex items-center justify-center gap-2', 'cursor-pointer group duration-300', !isHomePage ? 'border border-blue-dark text-blue-dark hover:bg-blue-dark/10' : 'border border-background-gray text-background-gray hover:bg-background-gray/10', isSubmitting ? (!isHomePage ? 'bg-blue-dark/15' : 'bg-background-gray/5') : '')}>
+            <button type="submit" disabled={isSubmitting} className={cn('w-full py-3 xl:py-2.5 sm:py-2', 'flex items-center justify-center gap-2 sm:gap-1.5', 'border cursor-pointer group duration-300', !isHomePage ? 'border-blue-dark text-blue-dark hover:bg-blue-dark hover:text-background' : 'border-background-gray text-background-gray hover:bg-background-gray hover:text-blue-dark', isSubmitting ? (!isHomePage ? 'bg-blue-dark/15' : 'bg-background-gray/5') : '')} onMouseEnter={() => setIsButtonHovered(true)} onMouseLeave={() => setIsButtonHovered(false)}>
               <SMALL>{isSubmitting ? 'Отправка...' : buttonText}</SMALL>
-              <ArrowUpRight className={cn('size-6', 'mt-0.5 -translate-x-1 group-hover:-translate-x-0.5 duration-300', isSubmitting && 'animate-pulse')} strokeWidth={1.5} />
+
+              <AnimatedArrow
+                isHovered={isButtonHovered}
+                size="size-8 xl:size-7"
+                shift={24}
+                strokeWidth={1.25}
+                colors={{
+                  default: !isHomePage ? 'text-blue-dark' : 'text-background-gray',
+                  hover: !isHomePage ? 'group-hover:text-background' : 'group-hover:text-blue-dark',
+                }}
+                className={cn(isSubmitting && 'animate-pulse')}
+              />
             </button>
           </div>
         </form>
@@ -133,7 +145,7 @@ export default function Footer() {
           <div className="space-y-3 sm:space-y-2" key={key}>
             {[key === 'contacts', key === 'location', key === 'socials'].includes(true) && (
               <SMALL offset={0} className={cn('font-semibold', !isHomePage ? 'text-blue-dark' : 'text-gray')}>
-                {key === 'contacts' ? 'Контакты' : key === 'location' ? 'Адрес' : 'Соц. сети'}
+                {key === 'contacts' ? 'Контакты:' : key === 'location' ? 'Адрес:' : 'Соц. сети:'}
               </SMALL>
             )}
 
