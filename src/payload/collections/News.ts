@@ -1,5 +1,10 @@
 import type {CollectionConfig} from 'payload'
 
+import {BlockRichText} from '@/payload/blocks/rich-text'
+import {BlockImageText} from '@/payload/blocks/image-text'
+import {BlockImage} from '@/payload/blocks/image'
+import {BlockQuote} from '@/payload/blocks/quote'
+
 export const News: CollectionConfig = {
   slug: 'news',
   access: {
@@ -80,7 +85,7 @@ export const News: CollectionConfig = {
     {
       name: 'content',
       type: 'blocks',
-      blocks: [RichTextBlock, ImageTextBlock, ImageBlock, QuoteBlock],
+      blocks: [BlockRichText, BlockImageText, BlockImage, BlockQuote],
       required: true,
     },
   ],

@@ -234,9 +234,83 @@ export interface News {
     description?: string | null;
     link?: string | null;
   };
-  content: string;
+  content: (BlockRichText | BlockImageText | BlockImage | BlockQuote)[];
   updatedAt: string;
   createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlockRichText".
+ */
+export interface BlockRichText {
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'richText';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlockImageText".
+ */
+export interface BlockImageText {
+  images: {
+    image: string | Media;
+    id?: string | null;
+  }[];
+  layout: 'left' | 'topLeft' | 'topRight' | 'bottomRight' | 'bottomLeft';
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'imageText';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlockImage".
+ */
+export interface BlockImage {
+  image: string | Media;
+  caption?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'image';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlockQuote".
+ */
+export interface BlockQuote {
+  quote: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'quote';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -455,9 +529,60 @@ export interface NewsSelect<T extends boolean = true> {
         description?: T;
         link?: T;
       };
-  content?: T;
+  content?:
+    | T
+    | {
+        richText?: T | BlockRichTextSelect<T>;
+        imageText?: T | BlockImageTextSelect<T>;
+        image?: T | BlockImageSelect<T>;
+        quote?: T | BlockQuoteSelect<T>;
+      };
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlockRichText_select".
+ */
+export interface BlockRichTextSelect<T extends boolean = true> {
+  content?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlockImageText_select".
+ */
+export interface BlockImageTextSelect<T extends boolean = true> {
+  images?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
+  layout?: T;
+  content?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlockImage_select".
+ */
+export interface BlockImageSelect<T extends boolean = true> {
+  image?: T;
+  caption?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "BlockQuote_select".
+ */
+export interface BlockQuoteSelect<T extends boolean = true> {
+  quote?: T;
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
