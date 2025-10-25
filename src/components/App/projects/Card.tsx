@@ -40,8 +40,8 @@ export default function Card({project, variant = 'default', className}: {project
         </div>
 
         <Link href={project.mention ?? ''} className={cn('flex items-center gap-1', 'group', !project.mention && 'opacity-0 pointer-events-none sm:hidden')}>
-          <SMALL className="text-gray-blue">Смотреть в СМИ</SMALL>
-          <ArrowRight className="stroke-gray-blue size-6 group-hover:translate-x-0.75 duration-300" strokeWidth={1.5} />
+          <SMALL className="text-gray-blue group-hover:text-blue-dark duration-300">Смотреть в СМИ</SMALL>
+          <ArrowRight className={cn('stroke-gray-blue size-6', 'group-hover:stroke-blue-dark group-hover:translate-x-0.75 duration-300')} strokeWidth={1.5} />
         </Link>
       </div>
     </div>

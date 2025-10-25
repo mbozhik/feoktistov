@@ -15,7 +15,7 @@ export default function Card({member}: {member: Member}) {
       <div className="relative w-full h-[55vh] sm:h-auto overflow-hidden">
         <PayloadImage resource={member.picture} className="block size-full object-cover object-top group-hover:scale-102 duration-300" />
 
-        <div className={cn('absolute inset-0', 'p-6 xl:p-5 sm:p-3 grid place-items-start', 'group-hover:bg-black/50 duration-300')}>
+        <div className={cn('absolute inset-0', 'p-6 xl:p-5 sm:p-3 grid justify-end', 'group-hover:bg-black/50 duration-300')}>
           <ArrowUpRightIcon className="size-10 text-background opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 duration-300 ease-in-out" strokeWidth={1} />
         </div>
       </div>
